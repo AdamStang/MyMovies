@@ -1,0 +1,40 @@
+<div class="movie-grid">
+  <div
+    *ngFor="let movie of filteredMovies(); let i = index" 
+    class="movie-card" 
+    [style.animation-delay]="i * 0.07 + 's'">
+      <div class="poster-container">
+        <img [src]="movie.imageUrl" alt="{{movie.title}}">
+        <div class="info-overlay">
+
+          <!-- Movie Title -->
+          <h3>{{ movie.title }}</h3>
+
+          <!-- Movie Genres -->
+          <div class="genre-chips">
+            <div *ngFor="let genre of movie.genres" class="chip-small">
+              {{ genre }}
+            </div>
+          </div>
+
+          <!-- Movie Year -->
+          <p class="year">{{ movie.year }}</p>
+
+          <!-- Movie Actors -->
+          <p class="actors">
+            {{ getMovieActorNames(movie.actorIds).join(', ') }}
+          </p>
+
+          <!-- Movie Rating -->
+          <div class="rating">
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+              <mat-icon [color]="star <= movie.rating/2 ? 'accent' : ''">
+                star
+              </mat-icon>
+            </ng-container>
+            <span>{{ movie.rating }}/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+:host {
+  display: block;
+  overflow: auto;
+  height: 100%;
+  scroll-behavior: smooth;
+  animation: gradientMove 20s ease infinite;
+  font-family: 'Roboto', sans-serif;
+  color: #eee;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.movie-card {
+  border-radius: 0;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards;
+
+  .poster-container {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .info-overlay {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      justify-content: flex-end;
+      padding: 0.6rem;
+      background: rgba(37, 99, 235, 0.85);
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+
+      .genre-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin: 4px 0;
+      }
+
+      .chip-small {
+        font-size: 10px;
+        padding: 0 8px;
+        border-radius: 10px;
+        background-color: #fff;
+        color: #2563EB;
+        font-weight: bold;
+      }
+    
+      .year,
+      .actors {
+        font-size: 0.75rem;
+        color: #ddd;
+        line-height: 1.2;
+        max-height: 3.6em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      h3 { 
+        margin: 0; 
+        font-size: 1.1rem; 
+        font-weight: 700;
+        color: eee;
+        margin-bottom: 2px;
+      }
+
+      p { 
+        font-size: 0.75rem; 
+        margin: 0.2rem 0 0; 
+        color: #ccc; 
+      }
+
+      .rating { 
+        display: flex; 
+        align-items: center; 
+        font-size: 0.7rem; 
+      }
+
+      mat-icon { 
+        font-size: 16px; 
+        height: 16px;
+        width: 16px;
+      }
+
+      span { 
+        margin-left: 0.3rem; 
+        font-size: 0.7rem; 
+      }
+    }
+
+    &:hover .info-overlay { 
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

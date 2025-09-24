@@ -1,0 +1,49 @@
+:host {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  border-bottom: 2px solid #2563EB;
+}
+
+.app-toolbar {
+  height: 100px;
+  background: #2b2b31;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  padding: 0;
+  max-width: 1000px;
+
+  .site-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2563EB;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .search-field { 
+      width: 250px; 
+      min-width: 180px; 
+      color: white;
+
+      .close-icon {
+        cursor: pointer;
+      }
+    }
+
+    .sort-icon,
+    .filter-icon {
+        color: grey;
+    }
+  }
+}
+
+.active-sort {
+    color: #2563EB;
+}
