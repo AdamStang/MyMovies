@@ -1,5 +1,26 @@
 <mat-toolbar class="app-toolbar">
   <span class="site-logo">My Movies</span>
+
+  <div class="outside-buttons">
+    <!-- Filter Button Outside -->
+    <button 
+      mat-icon-button 
+      color="accent" 
+      class="filter-icon-outside" 
+      (click)="openFilterDialog()">
+        <mat-icon>filter_list</mat-icon>
+    </button>
+  
+    <!-- Sort Button Outside -->
+    <button 
+      mat-icon-button 
+      color="accent" 
+      class="sort-icon-outside" 
+      [matMenuTriggerFor]="menu">
+        <mat-icon>sort</mat-icon>
+    </button>
+  </div>
+
   <div class="controls">
     <mat-form-field appearance="outline" class="search-field custom-input">
   
@@ -42,7 +63,10 @@
         <mat-icon>sort</mat-icon>
     </button>
 
-    <!-- Sort Menu -->
+    
+  </div>
+
+  <!-- Sort Menu -->
     <mat-menu #menu="matMenu" class="custom-menu">
       <button 
         mat-menu-item 
@@ -65,5 +89,4 @@
           Sort by Name
       </button>
     </mat-menu>
-  </div>
 </mat-toolbar>
