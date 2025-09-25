@@ -61,6 +61,9 @@
 
 @media (max-width: 420px) {
   .app-toolbar {
+    padding: 8px 24px;
+    height: 120px;
+
     .controls {
       flex: 1;
       
