@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MovieFilterService } from '../../services/movie-filter.service';
 import { MatChipsModule } from '@angular/material/chips';
 import { ActorsService } from '../../services/actors.service';
+import { RatingComponent } from './rating/rating.component';
 
 @Component({
   selector: 'movies',
@@ -21,17 +22,20 @@ import { ActorsService } from '../../services/actors.service';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    RatingComponent
   ],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent {
   filteredMovies = computed(() => {
-    const filters = this.movieFilterService.filters();
+    const favoriteOnly = this.movieFilterService.favoriteOnly();
+    const genres = this.movieFilterService.genres();
+    const actors = this.movieFilterService.actors();
     const search = this.movieFilterService.search();
     const sort = this.movieFilterService.sort();
-    return this.movieService.getMovies(search, filters, sort);
+    return this.movieService.getMovies(search, favoriteOnly, genres, actors, sort);
   });
 
   constructor(

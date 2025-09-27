@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Movie } from "../models/movie.model";
-import { MovieFilters } from "./movie-filter.service";
 import { Genres } from "../enums/genres.enum";
 import { SortMovie } from "../enums/sortMovie.enum";
+import { Actor } from "../models/actor.model";
 
 @Injectable({
     providedIn: 'root'
@@ -241,14 +241,14 @@ export class MovieService {
         }
     ];
 
-    getMovies(search: string, filters: MovieFilters, sort: SortMovie): Movie[] {
+    getMovies(search: string, favoriteOnly: boolean, genres: string[], actors: Actor[], sort: SortMovie): Movie[] {
         const movies =  this.movies.filter(movie => {
             const matchesSearch = movie.title.toLowerCase().includes(search.toLowerCase());
-            const matchesFavorite = !filters.favoriteOnly || movie.favourite === true;
-            const matchesGenres = !filters.genres?.length || 
-                movie.genres?.some(g => filters.genres.includes(g));
-            const matchesActors = !filters.actors?.length || 
-                movie.actorIds.some(a => filters.actors.map(x => x.id).includes(a));
+            const matchesFavorite = !favoriteOnly || movie.favourite === true;
+            const matchesGenres = !genres?.length || 
+                movie.genres?.some(g => genres.includes(g));
+            const matchesActors = !actors?.length || 
+                movie.actorIds.some(a => actors.map(x => x.id).includes(a));
 
             return matchesSearch && matchesFavorite && matchesGenres && matchesActors;
         });

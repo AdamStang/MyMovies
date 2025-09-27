@@ -35,7 +35,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.35s ease;
+      transition: transform 0.35s ease, scale 0.35s ease;
     }
 
     .info-overlay {
@@ -51,7 +51,7 @@
       gap: 6px;
       justify-content: flex-end;
       padding: 0.6rem;
-      background: rgba(37, 99, 235, 0.85);
+      background: rgba(37, 99, 235, 0.9);
       color: #fff;
       opacity: 0;
       transition: opacity 0.35s ease, transform 0.35s ease;
@@ -61,6 +61,9 @@
         flex-wrap: wrap;
         gap: 4px;
         margin: 4px 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.4s ease,
       }
 
       .chip-small {
@@ -75,11 +78,14 @@
       .year,
       .actors {
         font-size: 0.75rem;
-        color: #ddd;
+        color: #c4d7ff;
         line-height: 1.2;
         max-height: 3.6em;
         overflow: hidden;
         text-overflow: ellipsis;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.35s ease;
       }
 
       h3 { 
@@ -87,25 +93,27 @@
         font-size: 1.1rem; 
         font-weight: 700;
         color: eee;
-        margin-bottom: 2px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.35s ease;
       }
 
       p { 
         font-size: 0.75rem; 
-        margin: 0.2rem 0 0; 
+        margin: 0; 
         color: #ccc; 
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.35s ease;
       }
 
       .rating { 
         display: flex; 
         align-items: center; 
         font-size: 0.7rem; 
-      }
-
-      mat-icon { 
-        font-size: 16px; 
-        height: 16px;
-        width: 16px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.35s ease;
       }
 
       span { 
@@ -116,6 +124,22 @@
 
     &:hover .info-overlay { 
       opacity: 1;
+    }
+
+    &:hover {
+      .info-overlay { 
+        opacity: 1;
+
+        h3, p, .rating, .actors, .year, .genre-chips {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+
+      img {
+        scale: 1.05;
+      }
     }
   }
 }

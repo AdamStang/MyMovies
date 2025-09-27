@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, Signal, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,9 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MovieFilterService } from '../../services/movie-filter.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FilterDialogComponent } from '../movies/filter-dialog/filter-dialog.component';
 import { SortMovie } from '../../enums/sortMovie.enum';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { SortBottomSheetComponent } from '../movies/sort-bottom-sheet/sort-bottom-sheet.component';
+import { FilterBottomSheetComponent } from '../movies/filter-bottom-sheet/filter-bottom-sheet.component';
 
 @Component({
   selector: 'toolbar',
@@ -20,35 +22,29 @@ import { MatMenuModule } from '@angular/material/menu';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBottomSheetModule
   ],
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
   sortMovie = SortMovie;
-  actualSort: SortMovie = SortMovie.Name;
 
   constructor(
-    private dialog: MatDialog,
+    private bottomSheet: MatBottomSheet,
     public movieFilterService: MovieFilterService
-  ) { 
-    effect(() => {
-      this.actualSort = movieFilterService.sort();
-    });
-  }
+  ) { }
 
   onSearchChange(value: string) {
     this.movieFilterService.setSearch(value);
   }
 
-  openFilterDialog() {
-    this.dialog.open(FilterDialogComponent, {
-      data: this.movieFilterService.filters()
-    });
+  openSortBottomSheet() {
+    this.bottomSheet.open(SortBottomSheetComponent);
   }
 
-  sort(sort: SortMovie) {
-    this.movieFilterService.setSort(sort);
+  openFilterBottomSheet() {
+    this.bottomSheet.open(FilterBottomSheetComponent);
   }
 }

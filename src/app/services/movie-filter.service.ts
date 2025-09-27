@@ -3,42 +3,41 @@ import { Genres } from '../enums/genres.enum';
 import { Actor } from '../models/actor.model';
 import { SortMovie } from '../enums/sortMovie.enum';
 
-export interface MovieFilters {
-  favoriteOnly: boolean;
-  genres: Genres[];
-  actors: Actor[];
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class MovieFilterService {
   search = signal<string>('');
-  filters = signal<MovieFilters>({
-    favoriteOnly: false,
-    genres: [],
-    actors: []
-  });
+  favoriteOnly = signal<boolean>(false);
+  genres = signal<Genres[]>([]);
+  actors = signal<Actor[]>([]);
   sort = signal<SortMovie>(SortMovie.Name);
 
   setSearch(value: string) {
     this.search.set(value);
   }
 
-  toggleFavorite(value: boolean) {
-    this.filters.update(f => ({ ...f, favorite: value }));
+  toggleFavorite() {
+    const current = this.favoriteOnly();
+    this.favoriteOnly.set(!current);
   }
 
-  setGenres(genres: Genres[]) {
-    this.filters.update(f => ({ ...f, genres }));
+  toggleActor(actor: Actor) {
+    const current = this.actors();
+    this.actors.set(
+      current.includes(actor)
+        ? current.filter(a => a !== actor)
+        : [...current, actor]
+    );
   }
 
-  setActors(actors: Actor[]) {
-    this.filters.update(f => ({ ...f, actors }));
-  }
-
-  setFilters(filters: MovieFilters) {
-    this.filters.set(filters);
+  toggleGenre(genre: Genres) {
+    const current = this.genres();
+    this.genres.set(
+      current.includes(genre)
+        ? current.filter(g => g !== genre)
+        : [...current, genre]
+    );
   }
 
   setSort(sort: SortMovie) {

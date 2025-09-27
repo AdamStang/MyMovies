@@ -7,7 +7,7 @@
       mat-icon-button 
       color="accent" 
       class="filter-icon-outside" 
-      (click)="openFilterDialog()">
+      (click)="openFilterBottomSheet()">
         <mat-icon>filter_list</mat-icon>
     </button>
   
@@ -16,7 +16,7 @@
       mat-icon-button 
       color="accent" 
       class="sort-icon-outside" 
-      [matMenuTriggerFor]="menu">
+      (click)="openSortBottomSheet()">
         <mat-icon>sort</mat-icon>
     </button>
   </div>
@@ -50,7 +50,7 @@
       mat-icon-button 
       color="accent" 
       class="filter-icon" 
-      (click)="openFilterDialog()">
+      (click)="openFilterBottomSheet()">
         <mat-icon>filter_list</mat-icon>
     </button>
 
@@ -59,34 +59,8 @@
       mat-icon-button 
       color="accent" 
       class="sort-icon" 
-      [matMenuTriggerFor]="menu">
+      (click)="openSortBottomSheet()">
         <mat-icon>sort</mat-icon>
     </button>
-
-    
   </div>
-
-  <!-- Sort Menu -->
-    <mat-menu #menu="matMenu" class="custom-menu">
-      <button 
-        mat-menu-item 
-        [ngClass]="{ 'active-sort': actualSort === sortMovie.Rating }"
-        (click)="sort(sortMovie.Rating)">
-          Sort by Rating
-      </button>
-
-      <button 
-        mat-menu-item 
-        [ngClass]="{ 'active-sort': actualSort === sortMovie.Year }"
-        (click)="sort(sortMovie.Year)">
-          Sort by Year
-      </button>
-
-      <button 
-        mat-menu-item 
-        [ngClass]="{ 'active-sort': actualSort === sortMovie.Name }"
-        (click)="sort(sortMovie.Name)">
-          Sort by Name
-      </button>
-    </mat-menu>
 </mat-toolbar>

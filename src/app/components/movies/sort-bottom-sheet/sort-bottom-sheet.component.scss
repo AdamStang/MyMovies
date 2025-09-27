@@ -1,0 +1,28 @@
+mat-list-item {
+  cursor: pointer !important;
+  border-radius: 50px;
+
+  span,
+  mat-icon {
+    color: #aaa;
+  }
+
+  &:hover {
+    background: #30303B;
+
+    span,
+    mat-icon {
+      color: #aaa;
+    }
+  }
+
+  &.active-sort {
+    background: #353544;
+    color: #2563EB;
+    
+    span,
+    mat-icon {
+      color: #2563EB;
+    }
+  }
+}

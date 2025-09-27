@@ -1,0 +1,46 @@
+<div class="filter-bottom-sheet">
+  <div class="filter-title">Filter</div>
+
+  <div class="filter-section">
+    <div class="section-title">Favourite</div>
+    <div class="section-items">
+      <div class="section-item" [ngClass]="{'active': movieFilterService.favoriteOnly() === true}">
+        <mat-checkbox 
+          (click)="movieFilterService.toggleFavorite()"
+          [checked]="movieFilterService.favoriteOnly() === true">
+            Show favourite only
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="section-title">Genres</div>
+    <div class="section-items">
+      <div 
+        class="section-item" 
+        *ngFor="let genre of genresEnumValues"
+        (click)="movieFilterService.toggleGenre(genre)"
+        [ngClass]="{'active': movieFilterService.genres().includes(genre)}">
+          <mat-checkbox [checked]="movieFilterService.genres().includes(genre)">
+            {{ genre }}
+          </mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="section-title">Actors</div>
+    <div class="section-items">
+      <div 
+        class="section-item" 
+        *ngFor="let actor of actors"
+        (click)="movieFilterService.toggleActor(actor)"
+        [ngClass]="{'active': movieFilterService.actors().includes(actor)}">
+          <mat-checkbox [checked]="movieFilterService.actors().includes(actor)">
+            {{ actor.name }}
+          </mat-checkbox>
+      </div>
+    </div>
+  </div>
+</div>

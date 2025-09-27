@@ -1,0 +1,25 @@
+<mat-list>
+  <mat-list-item
+    mat-list-item 
+    [ngClass]="{ 'active-sort': actualSort() === sortMovie.Name }"
+    (click)="sort(sortMovie.Name)">
+      <mat-icon matListItemIcon>sort_by_alpha</mat-icon>
+      <span matListItemTitle>Sort by Name</span>
+  </mat-list-item>
+
+  <mat-list-item
+    mat-list-item 
+    [ngClass]="{ 'active-sort': actualSort() === sortMovie.Rating }"
+    (click)="sort(sortMovie.Rating)">
+      <mat-icon matListItemIcon>star</mat-icon>
+      <span matListItemTitle>Sort by Rating</span>
+  </mat-list-item>
+
+  <mat-list-item
+    mat-list-item 
+    [ngClass]="{ 'active-sort': actualSort() === sortMovie.Year }"
+    (click)="sort(sortMovie.Year)">
+      <mat-icon matListItemIcon>event</mat-icon>
+      <span matListItemTitle>Sort by Year</span>
+  </mat-list-item>
+</mat-list>

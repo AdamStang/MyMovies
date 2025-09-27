@@ -27,11 +27,7 @@
 
           <!-- Movie Rating -->
           <div class="rating">
-            <ng-container *ngFor="let star of [1,2,3,4,5]">
-              <mat-icon [color]="star <= movie.rating/2 ? 'accent' : ''">
-                star
-              </mat-icon>
-            </ng-container>
+            <star-rating [rating]="movie.rating"></star-rating>
             <span>{{ movie.rating }}/10</span>
           </div>
         </div>
