@@ -1,42 +1,62 @@
+:host {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
 .filter-bottom-sheet {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex: 1 1 auto;
   margin: 8px 0;
 
   .filter-title {
+    flex: 0 0 auto;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
     color: #ccc;
   }
 
-  .filter-section {
+  .filter-body {
+    height: 100%;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 
-    .section-title {
-      font-size: 18px;
-      font-weight: 500;
-      color: #ccc;
-    }
-
-    .section-items {
+    .filter-section {
       display: flex;
       flex-direction: column;
       gap: 8px;
-
-      .section-item {
-        background: #30303B;
-        color: #aaa;
-        border-radius: 8px;
-
-        --mat-checkbox-label-text-color: #aaa;
-
-        &.active {
-          border: 2px solid #2563EB;
-          --mat-checkbox-label-text-color: #2563EB;
+  
+      .section-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: #ccc;
+      }
+  
+      .section-items {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+  
+        .section-item {
+          background: #30303B;
+          color: #aaa;
+          border-radius: 8px;
+  
+          --mat-checkbox-label-text-color: #aaa;
+  
+          &.active {
+            border: 2px solid #2563EB;
+            --mat-checkbox-label-text-color: #2563EB;
+          }
         }
       }
     }

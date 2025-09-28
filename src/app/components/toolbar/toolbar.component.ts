@@ -45,6 +45,8 @@ export class ToolbarComponent {
   }
 
   openFilterBottomSheet() {
-    this.bottomSheet.open(FilterBottomSheetComponent);
+    this.bottomSheet.open(FilterBottomSheetComponent, {
+      panelClass: 'custom-bottom-sheet'
+    });
   }
 }

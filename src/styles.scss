@@ -69,6 +69,15 @@ body {
   --mat-menu-item-label-text-color: grey;
 }
 
+.custom-bottom-sheet .mat-bottom-sheet-container {
+  max-height: 80vh;
+  height: 100%;
+  display: flex;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+}
+
 /* Apply globally */
 * {
   scrollbar-width: thin;              /* Firefox */
