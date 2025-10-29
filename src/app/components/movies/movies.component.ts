@@ -11,6 +11,7 @@ import { MovieFilterService } from '../../services/movie-filter.service';
 import { MatChipsModule } from '@angular/material/chips';
 import { ActorsService } from '../../services/actors.service';
 import { RatingComponent } from './rating/rating.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'movies',
@@ -41,10 +42,15 @@ export class MoviesComponent {
   constructor(
     private movieFilterService: MovieFilterService,
     private movieService: MovieService,
-    private actorService: ActorsService
+    private actorService: ActorsService,
+    private router: Router
   ) {}
 
   getMovieActorNames(actorIds: number[]) : string[] {
     return this.actorService.getActorsById(actorIds).map(x => x.name);
+  }
+
+  redirectToMovieDetail(movieId: number) : void {
+    this.router.navigate(["movies", movieId]);
   }
 }

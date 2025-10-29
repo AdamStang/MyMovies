@@ -1,0 +1,59 @@
+<div class="movie-detail">
+  <div class="movie-image">
+    <img [src]="movie?.imageUrl" [alt]="movie?.title">
+  </div>
+  <div class="movie-info">
+    <div class="movie-title">
+      <span>{{ movie?.title }}</span>
+      <span class="movie-year">
+        ({{ movie?.year }})
+      </span>
+    </div>
+
+    <div class="genre-chips">
+      <div *ngFor="let genre of movie?.genres" class="chip-small">
+        {{ genre }}
+      </div>
+    </div>
+
+    <div class="movie-description">
+      {{ movie?.description }}
+    </div>
+    
+    <div>
+      <div *ngIf="movie && movie?.rating" class="inline-rating">
+        <span>My Rating: </span>
+        <star-rating [rating]="movie.rating"></star-rating>
+        <span>{{ movie.rating }} / 10</span>
+      </div>
+
+      <div *ngIf="movie && movie?.imdbRating" class="inline-rating">
+        <span>Imdb Rating: </span>
+        <star-rating [rating]="movie.imdbRating ?? 0"></star-rating>
+        <span>{{ movie.imdbRating }} / 10</span>
+      </div>
+    
+      <div *ngIf="movie && movie?.csfdRating" class="inline-rating">
+        <span>Csfd Rating: </span>
+        <star-rating [rating]="movie.csfdRating ?? 0"></star-rating>
+        <span>{{ movie.csfdRating }} / 10</span>
+      </div>
+    </div>
+
+    <div *ngIf="movie && movie.movieYTUrl" class="movie-yt-link">
+      <a [href]="movie.movieYTUrl" target="_blank">Link to Youtube movie</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="movie && movie.trailerUrl" class="trailer">
+  <iframe
+    width="560"
+    height="315"
+    [src]="getSanitizedLink(movie.trailerUrl)"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+

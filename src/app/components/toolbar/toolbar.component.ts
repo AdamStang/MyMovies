@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { SortBottomSheetComponent } from '../movies/sort-bottom-sheet/sort-bottom-sheet.component';
 import { FilterBottomSheetComponent } from '../movies/filter-bottom-sheet/filter-bottom-sheet.component';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'toolbar',
@@ -23,7 +24,8 @@ import { FilterBottomSheetComponent } from '../movies/filter-bottom-sheet/filter
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    RouterModule
   ],
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
@@ -33,6 +35,7 @@ export class ToolbarComponent {
 
   constructor(
     private bottomSheet: MatBottomSheet,
+    public router: Router,
     public movieFilterService: MovieFilterService
   ) { }
 
