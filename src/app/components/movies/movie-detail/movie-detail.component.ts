@@ -5,12 +5,14 @@ import { Movie } from '../../../models/movie.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RatingComponent } from '../rating/rating.component';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'movie-detail',
   imports: [
     CommonModule,
-    RatingComponent
+    RatingComponent,
+    MatIconModule
   ],
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.scss']
