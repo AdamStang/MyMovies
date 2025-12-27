@@ -12,6 +12,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ActorsService } from '../../services/actors.service';
 import { RatingComponent } from './rating/rating.component';
 import { Router } from '@angular/router';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
 
 @Component({
   selector: 'movies',
@@ -24,7 +25,8 @@ import { Router } from '@angular/router';
     MatInputModule,
     MatCardModule,
     MatChipsModule,
-    RatingComponent
+    RatingComponent,
+    ToolbarComponent
   ],
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Movie } from '../../../models/movie.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RatingComponent } from '../rating/rating.component';
@@ -12,7 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     RatingComponent,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ],
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.scss']

@@ -38,6 +38,41 @@
       transition: transform 0.35s ease, scale 0.35s ease;
     }
 
+    .overlay {
+      display: flex;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.6rem;
+      background: linear-gradient(
+        to bottom,
+        rgba(43, 43, 49, 0) 30%,
+        rgba(43, 43, 49, 0.6) 50%,
+        rgba(43, 43, 49, 0.95) 80%,
+        #2b2b31 95%,
+        #2b2b31 100%
+      );
+
+      .movie-year {
+        font-size: 12px;
+      }
+
+      .movie-title {
+        font-weight: bold;
+      }
+
+      .rating { 
+        display: flex; 
+        align-items: center; 
+        font-size: 0.7rem; 
+        gap: 8px;
+      }
+    }
+
     .info-overlay {
       display: block;
       position: absolute;

@@ -2,7 +2,10 @@
   <div class="movie-image">
     <img [src]="movie?.imageUrl" [alt]="movie?.title">
     <div class="info-overlay">
-      <span>{{ movie?.title }}</span>
+      <span class="movie-title-overlay">{{ movie?.title }}</span>
+      <span class="movie-year">
+        {{ movie?.year }}
+      </span>
       <a 
         *ngIf="movie && movie.movieYTUrl" 
         class="play-on-yt-button"
@@ -11,6 +14,9 @@
         rel="noopener noreferrer">
           <mat-icon>play_arrow</mat-icon>
       </a>
+      <div class="back-button" [routerLink]="['/movies']">
+        <mat-icon>arrow_back</mat-icon>
+      </div>
     </div>
   </div>
   <div class="movie-info">
@@ -26,29 +32,29 @@
         {{ genre }}
       </div>
     </div>
-
-    <div class="movie-description">
-      {{ movie?.description }}
-    </div>
     
     <div class="ratings">
       <div *ngIf="movie && movie?.rating" class="column-rating">
-        <span class="rating-entity">My Rating</span>
+        <img  src="icons/MyRatingIcon.png" class="rating-entity">
         <span class="rating-number">{{ movie.rating }}</span>
         <star-rating [rating]="movie.rating"></star-rating>
       </div>
 
       <div *ngIf="movie && movie?.imdbRating" class="column-rating">
-        <span class="rating-entity">Imdb Rating</span>
+        <img src="icons/ImdbIcon.png" class="rating-entity">
         <span class="rating-number">{{ movie.imdbRating }}</span>
         <star-rating [rating]="movie.imdbRating ?? 0"></star-rating>
       </div>
     
       <div *ngIf="movie && movie?.csfdRating" class="column-rating">
-        <span class="rating-entity">Csfd Rating</span>
+        <img src="icons/CsfdIcon.png" class="rating-entity">
         <span class="rating-number">{{ movie.csfdRating }}</span>
         <star-rating [rating]="movie.csfdRating ?? 0"></star-rating>
       </div>
+    </div>
+
+    <div class="movie-description">
+      {{ movie?.description }}
     </div>
 
     <div *ngIf="movie && movie.movieYTUrl" class="movie-yt-link">

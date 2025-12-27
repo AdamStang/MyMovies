@@ -1,3 +1,4 @@
+<toolbar class="toolbar"></toolbar>
 <div class="movie-grid">
   <div
     *ngFor="let movie of filteredMovies(); let i = index" 
@@ -6,30 +7,12 @@
     (click)="redirectToMovieDetail(movie.id)">
       <div class="poster-container">
         <img [src]="movie.imageUrl" alt="{{movie.title}}">
-        <div class="info-overlay">
-
-          <!-- Movie Title -->
-          <h3>{{ movie.title }}</h3>
-
-          <!-- Movie Genres -->
-          <div class="genre-chips">
-            <div *ngFor="let genre of movie.genres" class="chip-small">
-              {{ genre }}
-            </div>
-          </div>
-
-          <!-- Movie Year -->
-          <p class="year">{{ movie.year }}</p>
-
-          <!-- Movie Actors -->
-          <p class="actors">
-            {{ getMovieActorNames(movie.actorIds).join(', ') }}
-          </p>
-
-          <!-- Movie Rating -->
+        <div class="overlay">
+          <span class="movie-title">{{movie.title}}</span>
+          <span class="movie-year">{{movie.year}}</span>
           <div class="rating">
             <star-rating [rating]="movie.rating"></star-rating>
-            <span>{{ movie.rating }}/10</span>
+            <span>{{ movie.rating }}</span>
           </div>
         </div>
       </div>
